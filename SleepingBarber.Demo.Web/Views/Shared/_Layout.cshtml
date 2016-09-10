@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SleepingBarber</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    @Scripts.Render("~/bundles/_")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div class="container body-content" ng-app="demo">
+        <hr />
+        @RenderBody()
+        <hr />
+        <footer>
+            <a href="https://github.com/SamerAlRawi/SleepingBarber">Project Homepage</a>
+        </footer>
+    </div>    
+</body>
+</html>

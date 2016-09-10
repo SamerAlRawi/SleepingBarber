@@ -1,0 +1,11 @@
+SleepingBarber.Demo.Console/obj/*
+SleepingBarber.Tests/bin/*
+*.cache
+SleepingBarber.Tests/obj/*
+SleepingBarber/obj/*
+SleepingBarber/bin/*
+SleepingBarber/packages/*
+SleepingBarber/.vs/*
+SleepingBarber.Demo.Console/bin/*
+SleepingBarber.Demo.Web/bin/*
+SleepingBarber.Demo.Web/obj/*

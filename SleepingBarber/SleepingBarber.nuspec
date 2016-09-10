@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>SleepingBarber</id>
+        <version>1.0.0</version>
+        <authors>Samer Al Rawi</authors>
+        <projectUrl>https://github.com/SamerAlRawi/SleepingBarber</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A  framework for handling async processing of messages, event based support and persistance.</description>
+        <summary>SleepingBarber queue framework.</summary>
+        <tags>queue async barber events</tags>
+    </metadata>
+    <files>
+        <file src="bin\Release\*.dll" />
+    </files>
+</package>

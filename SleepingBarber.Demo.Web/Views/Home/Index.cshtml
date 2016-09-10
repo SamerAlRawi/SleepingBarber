@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Demo";
+}
+
+<p class="lead">SleepingBarber is a framework for async queue processing, with events support and persistance.</p>
+<div class="container" ng-controller="demoController" ng-cloak>
+    <div class="row">
+        <div class="col-lg-4" id="demoContainer">
+            <span ng-repeat="event in events track by $index" class="eventMessage">{{event.CustomerName}}</span>
+        </div>
+        <div class="col-lg-4" id="eventsContainer">
+            <span ng-repeat="event in successList track by $index" class="successMessage">Customer with Id {{event}} served!</span>
+            <span ng-repeat="event in failList track by $index" class="errorMessage">Failed to serve customer with Id {{event}}</span>
+        </div>
+        <form name="mainForm">
+            <div class="col-lg-2" id="commands">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="#" ng-model="customers.count" ng-pattern="/^[0-9]{1,2}$/">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" ng-disabled="mainForm.$invalid" type="button" ng-click="addCustomers()">Add Customers</button>
+                    </span>
+                </div>
+                <input class="btn btn-danger" type="button" value="Clear events" ng-click="clearEvents()" />
+            </div>
+        </form>
+    </div>
+
+</div>
