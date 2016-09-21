@@ -5,15 +5,7 @@ namespace SleepingBarber.Demo.Web.Models
 {
     public class WebCustomer : ICustomer
     {
-        private int _id;
-
-        public WebCustomer(int id)
-        {
-            _id = id;
-        }
-
-        public string Id => _id.ToString();
-
+        public string Id { get; set; }
         public virtual void Serve()
         {
             var r = new Random(1000);

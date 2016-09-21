@@ -1,25 +1,23 @@
-﻿using System.Threading;
-using NSubstitute;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace SleepingBarber.Tests
 {
     [TestFixture]
     public class CustomersQueueTests
     {
-        private CustomersQueue<Customer> _customersQueue;
+        private CustomersQueue<CustomerForTest> _customersQueue;
 
         [SetUp]
         public void Setup()
         {
-            _customersQueue = new CustomersQueue<Customer>();
+            _customersQueue = new CustomersQueue<CustomerForTest>();
         }
 
         [Test]
-        public void EnqueueDequeue_Add_Customer_To_Queue_And_Retrieves_Accordingly()
+        public void Enqueue_Dequeue_Add_Customer_To_Queue_And_Retrieves_Accordingly()
         {
-            var customer1 = new Customer();
-            var customer2 = new Customer();
+            var customer1 = new CustomerForTest();
+            var customer2 = new CustomerForTest();
             _customersQueue.Enqueue(customer1);
             _customersQueue.Enqueue(customer2);
 
@@ -35,20 +33,21 @@ namespace SleepingBarber.Tests
         {
             for (int c = 0; c < customersCount; c++)
             {
-                _customersQueue.Enqueue(new Customer());   
+                _customersQueue.Enqueue(new CustomerForTest());   
             }
             Assert.That(_customersQueue.Count, Is.EqualTo(customersCount));
         }
-    }
 
-    internal class Customer : ICustomer
-    {
-        public bool Served { get; private set; }
-        public string Id { get; }
-
-        public void Serve()
+        [Test]
+        public void Enqueue_Notify_Customer_Arrived()
         {
-            Served = true;
+            bool notified = false;
+            _customersQueue.CustomerArrived += (sender, args) =>
+            {
+                notified = true;
+            };
+            _customersQueue.Enqueue(new CustomerForTest());
+            Assert.IsTrue(notified);
         }
     }
 }

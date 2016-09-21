@@ -21,16 +21,8 @@ namespace SleepingBarber.Demo.Web.Controllers
             var result = new List<EventResult>();
             for (int i = 0; i < customers; i++)
             {
-                if (i%3 == 0)
-                {
-                    _queue.Enqueue(new ErrorWebCustomer(i));
-                    result.Add(new EventResult { Id = i, CustomerName = $"Customer {i}" });
-                }
-                else
-                {
-                    _queue.Enqueue(new WebCustomer(i));
-                    result.Add(new EventResult {Id = i, CustomerName = $"Customer {i}"});
-                }
+                _queue.Enqueue(new WebCustomer {Id= i.ToString()});
+                result.Add(new EventResult { Id = i, CustomerName = $"Customer {i}" });
             }
             return Json(result);
         }

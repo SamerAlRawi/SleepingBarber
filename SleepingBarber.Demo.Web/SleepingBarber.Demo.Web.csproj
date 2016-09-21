@@ -167,7 +167,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\InMemoryRepository.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Server.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\StaticIOC.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
@@ -178,7 +180,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\BarberHub.cs" />
-    <Compile Include="Models\ErrorWebCustomer.cs" />
     <Compile Include="Models\EventResult.cs" />
     <Compile Include="Models\WebCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

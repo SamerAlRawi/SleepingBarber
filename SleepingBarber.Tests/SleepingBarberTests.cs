@@ -10,12 +10,14 @@ namespace SleepingBarber.Tests
     {
         private SleepingBarber<ICustomer> _sleepingBarber;
         private ICustomersQueue<ICustomer> _customersQueue;
+        private IServer<ICustomer> _server;
 
         [SetUp]
         public void Setup()
         {
+            _server = Substitute.For<IServer<ICustomer>>();
             _customersQueue = Substitute.For<ICustomersQueue<ICustomer>>();
-            _sleepingBarber = new SleepingBarber<ICustomer>(_customersQueue);
+            _sleepingBarber = new SleepingBarber<ICustomer>(_customersQueue, _server);
         }
 
         [Test]
@@ -31,8 +33,8 @@ namespace SleepingBarber.Tests
 
             Received.InOrder(() =>
             {
-                customer1Mock.Serve();
-                customer2Mock.Serve();
+                _server.Serve(customer1Mock);
+                _server.Serve(customer2Mock);
             });
         }
 
@@ -66,7 +68,7 @@ namespace SleepingBarber.Tests
         [Test]
         public void Barber_Notify_Listeners_When_A_Customer_Is_Served()
         {
-            string expected = "Customer X";
+            string expected = "CustomerForTest X";
 
             object eventSender = null;
             string actual = string.Empty;
@@ -102,10 +104,11 @@ namespace SleepingBarber.Tests
             };
 
             var customer1Mock = Substitute.For<ICustomer>();
-            customer1Mock.When(c => c.Serve()).Do((_) =>
+            _server.When(s=>s.Serve(customer1Mock)).Do((_) =>
             {
                 throw new Exception();
             });
+
             customer1Mock.Id.Returns(expected);
             _customersQueue.Dequeue().Returns(customer1Mock);
             _customersQueue.Count.Returns(1, 0);

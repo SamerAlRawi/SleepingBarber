@@ -7,13 +7,15 @@ namespace SleepingBarber
     {
         private ICustomersQueue<T> _customersQueue;
         private volatile bool _processInProgress;
+        private IServer<T> _server;
 
         public event EventHandler<DateTime> GoingToSleep;
         public event EventHandler<string> CustomerServed;
         public event EventHandler<string> FailedToServiceCustomer;
 
-        public SleepingBarber(ICustomersQueue<T> customersQueue)
+        public SleepingBarber(ICustomersQueue<T> customersQueue, IServer<T> server)
         {
+            _server = server;
             _customersQueue = customersQueue;
             _customersQueue.CustomerArrived += ProcessCustomerQueue;
         }
@@ -38,7 +40,7 @@ namespace SleepingBarber
                 var customer = _customersQueue.Dequeue();
                 try
                 {
-                    customer.Serve();
+                    _server.Serve(customer);
                     NotifyCustomerServed(customer);
                 }
                 catch (Exception ex)

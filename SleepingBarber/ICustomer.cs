@@ -2,7 +2,6 @@
 {
     public interface ICustomer
     {
-        string Id { get; }
-        void Serve();
+        string Id { get; set; }
     }
 }

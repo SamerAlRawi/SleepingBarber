@@ -12,21 +12,37 @@ namespace SleepingBarber.Demo.Web.App_Start
             RegisterTypes(container);
             return container;
         });
-        
+
         public static IUnityContainer GetConfiguredContainer()
         {
             return container.Value;
         }
-        
-        public static void RegisterTypes(IUnityContainer container)
+
+        private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterInstance(typeof(ICustomersQueue<WebCustomer>), 
-                new CustomersQueue<WebCustomer>(), 
+            //persistance repository
+            container.RegisterInstance(typeof(ICustomerRepository<WebCustomer>), new InMemoryRepository<WebCustomer>(),
                 new ContainerControlledLifetimeManager());
 
+            var repository = container.Resolve<ICustomerRepository<WebCustomer>>();
+
+            //persistance queue(one instance per domain)
+            container.RegisterInstance(typeof(ICustomersQueue<WebCustomer>),
+                new PersistanceCustomersQueue<WebCustomer>(repository),
+                new ContainerControlledLifetimeManager());
+
+            ////no-persistance queue(one instance per domain)
+            //container.RegisterInstance(typeof(ICustomersQueue<WebCustomer>),
+            //    new CustomersQueue<WebCustomer>(),
+            //    new ContainerControlledLifetimeManager());
+
+
+            container.RegisterType<IServer<WebCustomer>, Server<WebCustomer>>();
+            var server = container.Resolve<IServer<WebCustomer>>();
+
             var customersQueue = container.Resolve(typeof(ICustomersQueue<WebCustomer>)) as ICustomersQueue<WebCustomer>;
-            container.RegisterInstance(typeof(ISleepingBarber<WebCustomer>), 
-                new SleepingBarber<WebCustomer>(customersQueue), 
+            container.RegisterInstance(typeof(ISleepingBarber<WebCustomer>),
+                new SleepingBarber<WebCustomer>(customersQueue, server),
                 new ContainerControlledLifetimeManager());
 
             StaticIOC.Container = container;

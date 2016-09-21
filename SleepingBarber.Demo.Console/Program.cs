@@ -8,12 +8,14 @@ namespace SleepingBarber.Demo.Console
     {
         private static CustomersQueue<Customer> _queue;
         private static SleepingBarber<Customer> _sleepingBarber;
+        private static IServer<Customer> _server;
 
         static void Main(string[] args)
         {
             bool exitRequested = false;
             _queue = new CustomersQueue<Customer>();
-            _sleepingBarber = new SleepingBarber<Customer>(_queue);
+            _server = new Server<Customer>();
+            _sleepingBarber = new SleepingBarber<Customer>(_queue, _server);
             _sleepingBarber.GoingToSleep += BarberWentToSleep;
             WriteLine("Enter customers number to add then press ENTER");
             WriteLine("Enter Q to Exit");
@@ -48,7 +50,7 @@ namespace SleepingBarber.Demo.Console
             }
         }
     }
-    
+
     class Customer : ICustomer
     {
         private int _id;
@@ -58,12 +60,19 @@ namespace SleepingBarber.Demo.Console
             _id = id;
         }
 
-        public string Id => _id.ToString();
+        public string Id
+        {
+            get { return _id.ToString(); }
+            set { }
+        }
+    }
 
-        public void Serve()
+    public class Server<T> : IServer<T> where T : ICustomer
+    {
+        public void Serve(T customer)
         {
             Thread.Sleep(1000);
-            WriteLine($"Customer {_id} Got his haircut!");
+            WriteLine($"Customer {customer.Id} Got his haircut!");
         }
     }
 }
