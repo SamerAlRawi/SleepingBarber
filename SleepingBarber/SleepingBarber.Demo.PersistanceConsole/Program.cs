@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using Raven.Client;
 using Raven.Client.Document;
 using SleepingBarber.Persistance.RavenDB;
 
