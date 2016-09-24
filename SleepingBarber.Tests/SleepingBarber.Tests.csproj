@@ -39,7 +39,16 @@
       <HintPath>..\SleepingBarber\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Raven.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <HintPath>..\SleepingBarber\packages\RavenDB.Client.3.0.30155\lib\net45\Raven.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <HintPath>..\SleepingBarber\packages\RavenDB.Client.3.0.30155\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,6 +61,7 @@
     <Compile Include="CustomerForTest.cs" />
     <Compile Include="PersistanceCustomerQueueTests.cs" />
     <Compile Include="CustomersQueueTests.cs" />
+    <Compile Include="RavenDBcustomerRepositoryTests.cs" />
     <Compile Include="SleepingBarberTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,9 +69,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SleepingBarber.Persistance.RavenDB\SleepingBarber.Persistance.RavenDB.csproj">
+      <Project>{06922117-febb-4305-9581-0f7ca6fc7b3d}</Project>
+      <Name>SleepingBarber.Persistance.RavenDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SleepingBarber\SleepingBarber.csproj">
       <Project>{2792C5CA-9A99-421B-B395-9BDED0121C31}</Project>
       <Name>SleepingBarber</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SleepingBarber\SleepingBarber.Logging.RavenDB\SleepingBarber.Logging.RavenDB.csproj">
+      <Project>{c82708e3-e5ba-407c-8486-f6442c06561b}</Project>
+      <Name>SleepingBarber.Logging.RavenDB</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
