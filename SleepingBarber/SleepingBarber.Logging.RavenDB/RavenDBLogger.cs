@@ -1,5 +1,4 @@
-﻿using System;
-using Raven.Client;
+﻿using Raven.Client;
 
 namespace SleepingBarber.Logging.RavenDB
 {
@@ -15,12 +14,11 @@ namespace SleepingBarber.Logging.RavenDB
 
         public void LogException(BarberException exception)
         {
-            throw new NotImplementedException();
-        }
-
-        public void LogInformation(string logInfo)
-        {
-            throw new NotImplementedException();
+            using (IDocumentSession session = _documentStore.OpenSession())
+            {
+                session.Store(exception);
+                session.SaveChanges();
+            }
         }
     }
 }

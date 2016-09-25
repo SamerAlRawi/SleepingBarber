@@ -5,8 +5,8 @@ namespace SleepingBarber
 {
     public class SleepingBarber<T> : ISleepingBarber<T> where T : ICustomer
     {
-        private ICustomersQueue<T> _customersQueue;
         private volatile bool _processInProgress;
+        private ICustomersQueue<T> _customersQueue;
         private IServer<T> _server;
 
         public event EventHandler<DateTime> GoingToSleep;

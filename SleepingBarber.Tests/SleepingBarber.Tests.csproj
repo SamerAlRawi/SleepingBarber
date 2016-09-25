@@ -62,6 +62,7 @@
     <Compile Include="PersistanceCustomerQueueTests.cs" />
     <Compile Include="CustomersQueueTests.cs" />
     <Compile Include="RavenDBcustomerRepositoryTests.cs" />
+    <Compile Include="RavenDBLoggerTests.cs" />
     <Compile Include="SleepingBarberTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

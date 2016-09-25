@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -43,7 +44,13 @@ namespace SleepingBarber.Tests
         {
             bool barberWentToSleep = false;
             object eventSender = null;
-            DateTime sleptAt = DateTime.Now;
+            var sleptAt = DateTime.Now;
+            var customer1Mock = Substitute.For<ICustomer>();
+            var customer2Mock = Substitute.For<ICustomer>();
+
+            _customersQueue.Dequeue().Returns(customer1Mock, customer2Mock);
+            _customersQueue.Count.Returns(2, 1, 0);
+
             _sleepingBarber.GoingToSleep += (sender, time) =>
             {
                 barberWentToSleep = true;
@@ -51,13 +58,10 @@ namespace SleepingBarber.Tests
                 eventSender = sender;
             };
 
-            var customer1Mock = Substitute.For<ICustomer>();
-            var customer2Mock = Substitute.For<ICustomer>();
-            _customersQueue.Dequeue().Returns(customer1Mock, customer2Mock);
-            _customersQueue.Count.Returns(2, 1, 0);
-            _customersQueue.CustomerArrived += Raise.Event();
-
-
+            Task.Run(() =>
+            {
+                _customersQueue.CustomerArrived += Raise.Event();
+            }).GetAwaiter().GetResult();
             Thread.Sleep(1000);
 
             Assert.That(barberWentToSleep, Is.EqualTo(true), "Oops, the barber didn't go to sleep.");
@@ -82,8 +86,10 @@ namespace SleepingBarber.Tests
             customer1Mock.Id.Returns(expected);
             _customersQueue.Dequeue().Returns(customer1Mock);
             _customersQueue.Count.Returns(1, 0);
-            _customersQueue.CustomerArrived += Raise.Event();
-            
+            Task.Run(() =>
+            {
+                _customersQueue.CustomerArrived += Raise.Event();
+            }).GetAwaiter().GetResult();
             Thread.Sleep(1000);
 
             Assert.That(actual, Is.EqualTo(expected), "Oops, the barber didn't go to sleep.");

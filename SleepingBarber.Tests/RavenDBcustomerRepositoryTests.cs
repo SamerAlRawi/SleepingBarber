@@ -58,14 +58,6 @@ namespace SleepingBarber.Tests
                 _defaultSession.SaveChanges();
                 _defaultSession.Dispose();
             });
-
-            //var customerId = customer.Id;
-            //var instance = session.Load<T>(customerId);
-            //if (instance != null)
-            //{
-            //    session.Delete(instance);
-            //    session.SaveChanges();
-            //}
         }
     }
 
