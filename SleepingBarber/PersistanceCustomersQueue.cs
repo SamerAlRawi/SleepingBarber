@@ -42,7 +42,7 @@ namespace SleepingBarber
                     CustomerArrived(this, EventArgs.Empty);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //TODO logging here
             }

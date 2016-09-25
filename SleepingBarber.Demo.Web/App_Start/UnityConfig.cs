@@ -1,6 +1,9 @@
 using System;
 using Microsoft.Practices.Unity;
+using Raven.Client;
+using Raven.Client.Document;
 using SleepingBarber.Demo.Web.Models;
+using SleepingBarber.Persistance.RavenDB;
 
 namespace SleepingBarber.Demo.Web.App_Start
 {
@@ -20,8 +23,18 @@ namespace SleepingBarber.Demo.Web.App_Start
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            //persistance repository
-            container.RegisterInstance(typeof(ICustomerRepository<WebCustomer>), new InMemoryRepository<WebCustomer>(),
+            //persistance InMemory repository
+            //container.RegisterInstance(typeof(ICustomerRepository<WebCustomer>), new InMemoryRepository<WebCustomer>(),
+            //    new ContainerControlledLifetimeManager());
+            
+            //persistance RavenDB repository
+            IDocumentStore store = new DocumentStore
+            {
+                Url = "http://localhost:8080",
+                DefaultDatabase = "Customers",
+                //ConnectionStringName = "RavenDBDatabaseConnection"
+            };
+            container.RegisterInstance(typeof(ICustomerRepository<WebCustomer>), new RavenDBcustomerRepository<WebCustomer>(store),
                 new ContainerControlledLifetimeManager());
 
             var repository = container.Resolve<ICustomerRepository<WebCustomer>>();
@@ -35,7 +48,6 @@ namespace SleepingBarber.Demo.Web.App_Start
             //container.RegisterInstance(typeof(ICustomersQueue<WebCustomer>),
             //    new CustomersQueue<WebCustomer>(),
             //    new ContainerControlledLifetimeManager());
-
 
             container.RegisterType<IServer<WebCustomer>, Server<WebCustomer>>();
             var server = container.Resolve<IServer<WebCustomer>>();

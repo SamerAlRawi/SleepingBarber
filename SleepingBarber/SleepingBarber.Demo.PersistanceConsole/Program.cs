@@ -18,7 +18,7 @@ namespace SleepingBarber.Demo.PersistanceConsole
             {
                 Url = "http://localhost:8080",
                 DefaultDatabase = "Customers",
-                //ConnectionStringName = "ConnectionFromWebConfig"
+                //ConnectionStringName = "RavenDBDatabaseConnection"
             };
             var repository = new RavenDBcustomerRepository<Customer>(ravenDbdocumentStore);
             var queue = new PersistanceCustomersQueue<Customer>(repository);
