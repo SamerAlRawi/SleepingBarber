@@ -7,6 +7,7 @@ namespace SleepingBarber
         event EventHandler CustomerArrived;
         void Enqueue(T customer);
         T Dequeue();
+        void Delete(T customer);
         int Count { get; }
     }
 }

@@ -3,13 +3,13 @@ using System.Collections.Concurrent;
 
 namespace SleepingBarber
 {
-    public class CustomersQueue<T> : BlockingCollection<object>, ICustomersQueue<T> where T : ICustomer
+    public class CustomersQueue<T> : ConcurrentQueue<T>, ICustomersQueue<T> where T : ICustomer
     {
         public event EventHandler CustomerArrived;
 
         public void Enqueue(T customer)
         {
-            Add(customer);
+            base.Enqueue(customer);
             if (CustomerArrived != null)
             {
                 CustomerArrived(this, EventArgs.Empty);
@@ -18,7 +18,14 @@ namespace SleepingBarber
 
         public T Dequeue()
         {
-            return (T)Take();
+            T result = default(T);
+            TryDequeue(out result);
+            return result;
+        }
+
+        public void Delete(T customer)
+        {
+            //no operation needed, for persistance queues only
         }
     }
 }

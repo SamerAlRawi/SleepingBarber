@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SleepingBarber
 {
-    public class PersistanceCustomersQueue<T> : BlockingCollection<object>, IPersistanceCustomerQueue<T>
+    public class PersistanceCustomersQueue<T> : ConcurrentQueue<T>, IPersistanceCustomerQueue<T>
         where T : ICustomer
     {
         private ICustomerRepository<T> _customerRepository;
@@ -27,7 +27,7 @@ namespace SleepingBarber
 
             foreach (var item in list)
             {
-                Add(item);
+                Enqueue(item);
             }
         }
 
@@ -35,7 +35,7 @@ namespace SleepingBarber
         {
             try
             {
-                //wait for subscribers to register, need different mechanism or override
+                //wait for subscribers to register, need different pattern or override
                 Thread.Sleep(1000);
                 if (list.Any() && CustomerArrived != null)
                 {
@@ -51,7 +51,7 @@ namespace SleepingBarber
         public void Enqueue(T customer)
         {
             _customerRepository.Add(customer);
-            Add(customer);
+            base.Enqueue(customer);
             if (CustomerArrived != null)
             {
                 CustomerArrived(this, EventArgs.Empty);
@@ -60,9 +60,14 @@ namespace SleepingBarber
 
         public T Dequeue()
         {
-            var dequeue = (T)Take();
-            _customerRepository.Delete(dequeue);
-            return dequeue;
+            T result = default(T);
+            TryDequeue(out result);
+            return result;
+        }
+
+        public void Delete(T customer)
+        {
+            _customerRepository.Delete(customer);
         }
     }
 }

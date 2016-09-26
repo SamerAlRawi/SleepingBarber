@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using NSubstitute;
@@ -35,7 +36,6 @@ namespace SleepingBarber.Tests
         }
 
         [Test]
-        [Ignore("threading issue")]
         public void Initialize_Triggers_CustomerArrived_If_Database_Contains_Any_Customer()
         {
             bool customerArrived = false;
@@ -44,8 +44,13 @@ namespace SleepingBarber.Tests
 
             _customersQueue = new PersistanceCustomersQueue<CustomerForTest>(_repository);
             _customersQueue.CustomerArrived += (sender, args) => customerArrived = true;
+            var starTime = DateTime.Now;
 
-            Thread.Sleep(1000);
+            //wait until the event triggered or timeout.
+            while (!customerArrived && starTime > DateTime.Now.Subtract(TimeSpan.FromSeconds(5)))
+            {
+                Thread.Sleep(100);
+            }
 
             Assert.IsTrue(customerArrived);
         }
@@ -78,12 +83,18 @@ namespace SleepingBarber.Tests
             var customer1 = new CustomerForTest();
             _customersQueue.Enqueue(customer1);
             _customersQueue.Dequeue();
+            _repository.Received().Add(customer1);
+        }
 
-            Received.InOrder(() =>
-            {
-                _repository.Received().Add(customer1);
-                _repository.Received().Delete(customer1);
-            });
+        [Test]
+        public void Delete_Delete_Customer_Using_Repository()
+        {
+            var customer1 = new CustomerForTest();
+            _customersQueue.Enqueue(customer1);
+            var customer = _customersQueue.Dequeue();
+            _customersQueue.Delete(customer);
+
+            _repository.Received().Delete(customer1);
         }
 
         [TestCase(1)]
