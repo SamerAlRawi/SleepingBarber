@@ -15,3 +15,5 @@ SleepingBarber/SleepingBarber.Demo.PersistanceConsole/obj/*
 SleepingBarber/SleepingBarber.Demo.PersistanceConsole/bin/*
 SleepingBarber/SleepingBarber.Logging.RavenDB/obj/*
 SleepingBarber/SleepingBarber.Logging.RavenDB/bin/*
+SleepingBarber/SleepingBarber.Logging/bin/*
+SleepingBarber/SleepingBarber.Logging/obj/*

@@ -45,7 +45,12 @@ namespace SleepingBarber
                 }
                 catch (Exception ex)
                 {
-                    FailedToServiceCustomer(this, customer.Id);
+                    TryLog(ex, customer);
+                    Try(() =>
+                    {
+                        if (FailedToServiceCustomer != null)
+                            FailedToServiceCustomer(this, customer.Id);
+                    });
                 }
             }
             NotifyGoingToSleep();
@@ -79,6 +84,20 @@ namespace SleepingBarber
             catch (Exception ex)
             {
                 //log exception here.
+            }
+        }
+
+        private static void TryLog(Exception ex, T customer)
+        {
+            if (BarberLogManager.Logger != null)
+            {
+                BarberLogManager.Logger.LogException(new BarberException
+                {
+                    ErrorMessage = "Failed to serve customer",
+                    CustomerType = typeof(T).FullName,
+                    CustomerId = customer.Id,
+                    Exception = ex,
+                });
             }
         }
     }

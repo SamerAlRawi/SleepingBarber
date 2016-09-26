@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarberLogManagerTests.cs" />
     <Compile Include="CustomerForTest.cs" />
     <Compile Include="PersistanceCustomerQueueTests.cs" />
     <Compile Include="CustomersQueueTests.cs" />

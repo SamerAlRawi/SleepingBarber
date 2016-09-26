@@ -13,5 +13,10 @@ namespace SleepingBarber
         public string CustomerType { get; set; }
         public string CustomerId { get; set; }
         public Exception Exception { get; set; }
+
+        public override string ToString()
+        {
+            return $"Error: {ErrorMessage}\nCustomerType: {CustomerType}\nId: {CustomerId}\nException: {Exception}";
+        }
     }
 }
