@@ -42,6 +42,7 @@ namespace SleepingBarber
                 {
                     _server.Serve(customer);
                     NotifyCustomerServed(customer);
+                    _customersQueue.Delete(customer);
                 }
                 catch (Exception ex)
                 {

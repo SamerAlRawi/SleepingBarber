@@ -35,7 +35,9 @@ namespace SleepingBarber.Tests
             Received.InOrder(() =>
             {
                 _server.Serve(customer1Mock);
+                _customersQueue.Delete(customer1Mock);
                 _server.Serve(customer2Mock);
+                _customersQueue.Delete(customer2Mock);
             });
         }
 
