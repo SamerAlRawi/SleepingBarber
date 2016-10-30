@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Logging.Rave
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Logging", "SleepingBarber.Logging\SleepingBarber.Logging.csproj", "{E1D15EF4-12B6-4235-87AF-0EAAB162953E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BCA1206C-BDFF-41C8-BFCF-582F587D1A3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +62,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{349AD62C-DD7E-4B17-A0E5-FF7DF153A7C3} = {BCA1206C-BDFF-41C8-BFCF-582F587D1A3D}
 	EndGlobalSection
 EndGlobal

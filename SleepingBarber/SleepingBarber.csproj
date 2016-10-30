@@ -44,6 +44,7 @@
     <Compile Include="BarberLogManager.cs" />
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="InMemoryRepository.cs" />
     <Compile Include="IPersistanceCustomerQueue.cs" />
     <Compile Include="IServer.cs" />
     <Compile Include="PersistanceCustomersQueue.cs" />

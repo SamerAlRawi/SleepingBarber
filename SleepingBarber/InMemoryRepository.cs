@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SleepingBarber.Demo.Web.App_Start
+namespace SleepingBarber
 {
     public class InMemoryRepository<T> : ICustomerRepository<T> where T : ICustomer
     {
