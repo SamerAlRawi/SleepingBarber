@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SleepingBarber.Persistance.RavenDB</id>
+    <version>1.0.0</version>
+    <authors>Samer Al-Rawi</authors>
+    <projectUrl>https://github.com/SamerAlRawi/SleepingBarber</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>RavenDB persistance package for SleepingBarber framework</description>
+    <summary>RavenDB persistance for SleepingBarber</summary>
+    <copyright>Copyright Samer Al-Rawi</copyright>
+    <language>en-US</language>
+	<tags>persistance queue in-process barber sleeping event lightweight realtime ravendb</tags>
+    <dependencies>
+		<dependency id="SleepingBarber" version="1.0" />
+		<dependency id="RavenDB.Client" version="3.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="SleepingBarber.Persistance.RavenDB\bin\release\SleepingBarber.Persistance.RavenDB.dll" target="lib\net45\SleepingBarber.Persistance.RavenDB.dll" />
+  </files>
+</package>

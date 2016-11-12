@@ -10,6 +10,7 @@
     <summary>SleepingBarber queue framework for .net</summary>
     <copyright>Copyright Samer Al-Rawi</copyright>
     <language>en-US</language>
+	<tags>queue in-process barber sleeping event lightweight realtime ravendb</tags>
     <dependencies>
 	
     </dependencies>
