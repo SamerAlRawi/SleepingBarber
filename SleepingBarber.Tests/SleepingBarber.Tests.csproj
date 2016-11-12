@@ -71,9 +71,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SleepingBarber.Persistance.RavenDB\SleepingBarber.Persistance.RavenDB.csproj">
+    <ProjectReference Include="..\SleepingBarber.Persistence.RavenDB\SleepingBarber.Persistence.RavenDB.csproj">
       <Project>{06922117-febb-4305-9581-0f7ca6fc7b3d}</Project>
-      <Name>SleepingBarber.Persistance.RavenDB</Name>
+      <Name>SleepingBarber.Persistence.RavenDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\SleepingBarber\SleepingBarber.csproj">
       <Project>{2792C5CA-9A99-421B-B395-9BDED0121C31}</Project>

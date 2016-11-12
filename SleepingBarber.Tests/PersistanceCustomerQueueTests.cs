@@ -10,14 +10,14 @@ namespace SleepingBarber.Tests
     [TestFixture]
     public class PersistanceCustomerQueueTests
     {
-        private PersistanceCustomersQueue<CustomerForTest> _customersQueue;
+        private PersistenceCustomersQueue<CustomerForTest> _customersQueue;
         private ICustomerRepository<CustomerForTest> _repository;
 
         [SetUp]
         public void Setup()
         {
             _repository = Substitute.For<ICustomerRepository<CustomerForTest>>();
-            _customersQueue = new PersistanceCustomersQueue<CustomerForTest>(_repository);
+            _customersQueue = new PersistenceCustomersQueue<CustomerForTest>(_repository);
         }
 
         [Test]
@@ -26,7 +26,7 @@ namespace SleepingBarber.Tests
             var defaultList = new List<CustomerForTest> { new CustomerForTest(), new CustomerForTest() };
 
             _repository.GetAll().Returns(defaultList);
-            _customersQueue = new PersistanceCustomersQueue<CustomerForTest>(_repository);
+            _customersQueue = new PersistenceCustomersQueue<CustomerForTest>(_repository);
 
             var first = _customersQueue.Dequeue();
             var second = _customersQueue.Dequeue();
@@ -42,7 +42,7 @@ namespace SleepingBarber.Tests
             var defaultList = ParallelEnumerable.Repeat(new CustomerForTest(), 1000);
             _repository.GetAll().Returns(defaultList);
 
-            _customersQueue = new PersistanceCustomersQueue<CustomerForTest>(_repository);
+            _customersQueue = new PersistenceCustomersQueue<CustomerForTest>(_repository);
             _customersQueue.CustomerArrived += (sender, args) => customerArrived = true;
             var starTime = DateTime.Now;
 

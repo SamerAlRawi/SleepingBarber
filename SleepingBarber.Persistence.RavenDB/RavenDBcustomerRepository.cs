@@ -3,7 +3,7 @@ using System.Linq;
 using Raven.Client;
 using Raven.Client.Linq;
 
-namespace SleepingBarber.Persistance.RavenDB
+namespace SleepingBarber.Persistence.RavenDB
 {
     public class RavenDBcustomerRepository<T> : ICustomerRepository<T> where T : ICustomer
     {

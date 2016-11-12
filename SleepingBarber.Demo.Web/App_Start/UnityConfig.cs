@@ -3,7 +3,7 @@ using Microsoft.Practices.Unity;
 using Raven.Client;
 using Raven.Client.Document;
 using SleepingBarber.Demo.Web.Models;
-using SleepingBarber.Persistance.RavenDB;
+using SleepingBarber.Persistence.RavenDB;
 
 namespace SleepingBarber.Demo.Web.App_Start
 {
@@ -41,7 +41,7 @@ namespace SleepingBarber.Demo.Web.App_Start
 
             //persistance queue(one instance per domain)
             container.RegisterInstance(typeof(ICustomersQueue<WebCustomer>),
-                new PersistanceCustomersQueue<WebCustomer>(repository),
+                new PersistenceCustomersQueue<WebCustomer>(repository),
                 new ContainerControlledLifetimeManager());
 
             ////no-persistance queue(one instance per domain)

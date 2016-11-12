@@ -7,8 +7,8 @@
     <ProjectGuid>{06922117-FEBB-4305-9581-0F7CA6FC7B3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SleepingBarber.Persistance.RavenDB</RootNamespace>
-    <AssemblyName>SleepingBarber.Persistance.RavenDB</AssemblyName>
+    <RootNamespace>SleepingBarber.Persistence.RavenDB</RootNamespace>
+    <AssemblyName>SleepingBarber.Persistence.RavenDB</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

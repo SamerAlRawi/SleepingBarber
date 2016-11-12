@@ -45,9 +45,9 @@
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="InMemoryRepository.cs" />
-    <Compile Include="IPersistanceCustomerQueue.cs" />
+    <Compile Include="IPersistenceCustomerQueue.cs" />
     <Compile Include="IServer.cs" />
-    <Compile Include="PersistanceCustomersQueue.cs" />
+    <Compile Include="PersistenceCustomersQueue.cs" />
     <Compile Include="SleepingBarber.cs" />
     <Compile Include="ICustomer.cs" />
     <Compile Include="ISleepingBarber.cs" />

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace SleepingBarber
 {
-    public class PersistanceCustomersQueue<T> : ConcurrentQueue<T>, IPersistanceCustomerQueue<T>
+    public class PersistenceCustomersQueue<T> : ConcurrentQueue<T>, IPersistenceCustomerQueue<T>
         where T : ICustomer
     {
         private ICustomerRepository<T> _customerRepository;
         public event EventHandler CustomerArrived;
 
-        public PersistanceCustomersQueue(ICustomerRepository<T> customerRepository)
+        public PersistenceCustomersQueue(ICustomerRepository<T> customerRepository)
         {
             _customerRepository = customerRepository;
             InitializeQueue();

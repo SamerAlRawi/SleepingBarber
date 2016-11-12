@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Raven.Client.Document;
-using SleepingBarber.Persistance.RavenDB;
+using SleepingBarber.Persistence.RavenDB;
 
 namespace SleepingBarber.Demo.PersistanceConsole
 {
@@ -21,7 +21,7 @@ namespace SleepingBarber.Demo.PersistanceConsole
                 //ConnectionStringName = "RavenDBDatabaseConnection"
             };
             var repository = new RavenDBcustomerRepository<Customer>(ravenDbdocumentStore);
-            var queue = new PersistanceCustomersQueue<Customer>(repository);
+            var queue = new PersistenceCustomersQueue<Customer>(repository);
             var server = new Server<Customer>();
             var barber = new SleepingBarber<Customer>(queue, server);
             barber.CustomerServed += CustomerServed;

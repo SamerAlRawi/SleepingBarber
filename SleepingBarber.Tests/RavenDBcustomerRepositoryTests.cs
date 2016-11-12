@@ -1,7 +1,7 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 using Raven.Client;
-using SleepingBarber.Persistance.RavenDB;
+using SleepingBarber.Persistence.RavenDB;
 
 namespace SleepingBarber.Tests
 {
