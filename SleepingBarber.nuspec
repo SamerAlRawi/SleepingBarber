@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SleepingBarber</id>
+    <version>1.0.0</version>
+    <authors>Samer Al-Rawi</authors>
+    <projectUrl>https://github.com/SamerAlRawi/SleepingBarber</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>a lightweight thread safe in-process queue for .net</description>
+    <summary>SleepingBarber queue framework for .net</summary>
+    <copyright>Copyright Samer Al-Rawi</copyright>
+    <language>en-US</language>
+    <dependencies>
+	
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="SleepingBarber\bin\release\SleepingBarber.dll" target="lib\net45\SleepingBarber.dll" />
+  </files>
+</package>

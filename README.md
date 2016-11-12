@@ -126,7 +126,7 @@ class Program
 }
 ```
 
-#### Persistance using RavenDB <a name="install"></a>
+#### Persistance using RavenDB <a name="persistance"></a>
 After following the steps for running sample console app
 
 Add `SleepingBarber.Persistance.RavenDB` package to your console app
