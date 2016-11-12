@@ -201,10 +201,26 @@ class Program
 ```
 
 
-*Note: both `CustomersQueue` and `PersistenceCustomersQueue` classes are thread safe, 
+*Note: both `CustomersQueue`, `PersistenceCustomersQueue` and `InMemoryRepository`
+`RavenDBCustomerRepository` classes are thread safe, 
 if you use any IOC dependency injection container make sure those instances 
 are configured as singleton to guarantee sequential execution.
 ONLY One instance of the queue should exist at any point of time.*
+
+Example using unity container
+
+```csharp
+//register repository as singleton
+container.RegisterInstance(typeof(ICustomerRepository<Customer>), new RavenDBcustomerRepository<Customer>(store),
+    new ContainerControlledLifetimeManager());
+
+//register queue as singleton too(one instance per process domain)
+var repository = container.Resolve<ICustomerRepository<Customer>>();
+container.RegisterInstance(typeof(ICustomersQueue<Customer>),
+    new PersistenceCustomersQueue<Customer>(repository),
+    new ContainerControlledLifetimeManager());
+
+```
 
 #### Logging <a name="logging"></a>
 
