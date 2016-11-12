@@ -14,7 +14,7 @@ namespace SleepingBarber.Demo.Console
         {
             bool exitRequested = false;
             _queue = new CustomersQueue<Customer>();
-            _server = new Server<Customer>();
+            _server = new CustomerServer();
             _sleepingBarber = new SleepingBarber<Customer>(_queue, _server);
             _sleepingBarber.GoingToSleep += BarberWentToSleep;
             WriteLine("Enter customers range to add then press ENTER");
@@ -24,7 +24,7 @@ namespace SleepingBarber.Demo.Console
             {
                 var input = ReadLine();
                 exitRequested = input.ToUpper() == "Q";
-                TryAddcustomers(input);
+                AddCustomers(input);
             }
         }
 
@@ -33,7 +33,7 @@ namespace SleepingBarber.Demo.Console
             WriteLine($"Barber went to sleep @ {e}");
         }
 
-        private static void TryAddcustomers(string input)
+        private static void AddCustomers(string input)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace SleepingBarber.Demo.Console
         }
     }
 
-    class Customer : ICustomer
+    public class Customer : ICustomer
     {
         private int _id;
 
@@ -67,9 +67,9 @@ namespace SleepingBarber.Demo.Console
         }
     }
 
-    public class Server<T> : IServer<T> where T : ICustomer
+    public class CustomerServer : IServer<Customer>
     {
-        public void Serve(T customer)
+        public void Serve(Customer customer)
         {
             Thread.Sleep(1000);
             WriteLine($"Customer {customer.Id} Got his haircut!");
