@@ -1,9 +1,10 @@
 ### SleepingBarber
 a lightweight **in-process** queue for .net
-  - concurrent and fault tolerant.
-  - support for logging.
-  - persistance using RavenDB.
-  - support for events.
+  - fault tolerant
+  - guarantee sequential order
+  - logging
+  - persistance using RavenDB
+  - support for events
 
 ![Alt text](https://github.com/sameralrawi/sleepingbarber/raw/364ba9a945b703bc7e667f10b6bfdf007f49a648/diagram.jpg)
 
@@ -25,6 +26,10 @@ a lightweight **in-process** queue for .net
 [Persistance using RavenDB](#persistance)
 
 [Logging](#logging)
+
+- [EventLogger](#logging_eventlog)
+
+- [Logging.RavenDB](#logging_ravendb)
 
 
 #### Installation<a name="install"></a>
@@ -56,6 +61,7 @@ public class Server<T> : IServer<T> where T : ICustomer
     public void Serve(T customer)
     {
         Thread.Sleep(1000);
+        //message processing code goes here
         WriteLine($"Customer {customer.Id} Got his haircut!");
     }
 }
@@ -69,6 +75,7 @@ public class CustomerServer : IServer<Customer>
     public void Serve(Customer customer)
     {
         Thread.Sleep(1000);
+        //message processing code goes here
         Console.WriteLine($"Customer {customer.Id} Got his haircut!");
     }
 }
@@ -193,9 +200,51 @@ class Program
 }
 ```
 
+
+*Note: both `CustomersQueue` and `PersistenceCustomersQueue` classes are thread safe, 
+if you use any IOC dependency injection container make sure those instances 
+are configured as singleton to guarantee sequential execution.
+ONLY One instance of the queue should exist at any point of time.*
+
 #### Logging <a name="logging"></a>
 
-TODO add some logging examples here
+##### EventLogLogger example <a name="logging_eventlog"></a>
+```sh
+Install-Package SleepingBarber.Logging
+```
+
+Add the following line to your Application start, Global.asax if running in asp.net 
+
+Log will be added to Application logs with default event source `SleepingBarber`
+
+```csharp
+BarberLogManager.Logger = new EventLogLogger();
+```
+
+to specify another event source specify the event log source in constructor
+
+```csharp
+BarberLogManager.Logger = new EventLogLogger("MyEventSource");
+```
+
+##### RavenDBLogger example <a name="logging_ravendb"></a>
+
+```sh
+Install-Package SleepingBarber.Logging.RavenDB
+```
+Then add the following line to your application start
+
+```csharp
+var ravenDbdocumentStore = new DocumentStore
+{
+    //replace the below line with your ravendb address and port
+    Url = "http://address_to_your_ravenDb:8080",
+    DefaultDatabase = "Exceptions" //or any other database you specify
+};
+
+BarberLogManager.Logger = new RavenDBLogger(ravenDbDataStore);
+```
+
 
 License
 ----
