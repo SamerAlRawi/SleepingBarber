@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Persistence.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Demo.PersistenceConsole", "SleepingBarber.Demo.PersistenceConsole\SleepingBarber.Demo.PersistenceConsole.csproj", "{BE31E589-5609-4596-9C9B-77B0BD09278B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{213E80EA-C0CC-4A69-8BE7-B68E5A357009}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DemosProjects", "DemosProjects", "{213E80EA-C0CC-4A69-8BE7-B68E5A357009}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
