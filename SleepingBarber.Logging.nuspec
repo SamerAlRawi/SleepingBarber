@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SleepingBarber.Logging</id>
+    <version>1.0.0</version>
+    <authors>Samer Al-Rawi</authors>
+    <projectUrl>https://github.com/SamerAlRawi/SleepingBarber</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Event log logging package for SleepingBarber framework</description>
+    <summary>EventLog Logging for SleepingBarber</summary>
+    <copyright>Copyright Samer Al-Rawi</copyright>
+    <language>en-US</language>
+	<tags>logging queue in-process barber sleeping event lightweight realtime ravendb</tags>
+    <dependencies>
+		<dependency id="SleepingBarber" version="1.0.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="SleepingBarber.Logging\bin\release\SleepingBarber.Logging.dll" target="lib\net45\SleepingBarber.Logging.dll" />
+  </files>
+</package>
