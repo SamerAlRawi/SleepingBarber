@@ -99,16 +99,14 @@ namespace SleepingBarber.Tests
         }
 
         [Test]
-        public void Barber_Notify_Listeners_When_CustomerService_Failed()
+        public void Barber_Notify_Listeners_When_Customer_Service_Failed()
         {
-            string expected = "CustomerX";
-
             object eventSender = null;
-            string actual = string.Empty;
-            _sleepingBarber.FailedToServiceCustomer += (sender, id) =>
+            ICustomer actual = null;
+            _sleepingBarber.FailedToServiceCustomer += (sender, customer) =>
             {
                 eventSender = sender;
-                actual = id;
+                actual = customer;
             };
 
             var customer1Mock = Substitute.For<ICustomer>();
@@ -116,15 +114,14 @@ namespace SleepingBarber.Tests
             {
                 throw new Exception();
             });
-
-            customer1Mock.Id.Returns(expected);
+            
             _customersQueue.Dequeue().Returns(customer1Mock);
             _customersQueue.Count.Returns(1, 0);
             _customersQueue.CustomerArrived += Raise.Event();
             
             Thread.Sleep(1000);
 
-            Assert.That(actual, Is.EqualTo(expected), "Oops, the barber didn't go to sleep.");
+            Assert.IsNotNull(actual);
             Assert.That(eventSender, Is.EqualTo(_sleepingBarber));
         }
         

@@ -31,6 +31,8 @@ a lightweight **in-process** queue for .net
 
 - [Logging.RavenDB](#logging_ravendb)
 
+[SleepingBarber Events](#events)
+
 
 #### Installation<a name="install"></a>
 Create a new console application then install SleepingBarber nuget package
@@ -261,6 +263,35 @@ var ravenDbdocumentStore = new DocumentStore
 BarberLogManager.Logger = new RavenDBLogger(ravenDbDataStore);
 ```
 
+#### Events <a name="events"></a>
+
+SleepingBarber have three events to track and/or audit progress and success and failure
+
+```csharp
+/// <summary>
+/// This event invoked when barber finish serving all customers with timestamp of the event time
+/// </summary>
+public event EventHandler<DateTime> GoingToSleep;
+/// <summary>
+/// Listen to this event if you need to track progress or store auditing information
+/// This event invoked when a customer is served, the event argument is the customer Id
+/// </summary>
+public event EventHandler<string> CustomerServed;
+/// <summary>
+/// Invoked if the server fails to serve the given customer
+/// the event argument is the customer instance
+/// </summary>
+public event EventHandler<T> FailedToServiceCustomer;
+```
+
+Example listening for failure events to store info for auditing or re-queue customers
+
+```csharp
+_sleepingBarber.FailedToServiceCustomer += (sender, customer){
+    //Handle failing customer instance here
+    //Log or store customer information
+};
+```
 
 License
 ----

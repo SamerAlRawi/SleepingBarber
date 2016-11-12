@@ -6,6 +6,6 @@ namespace SleepingBarber
     {
         event EventHandler<DateTime> GoingToSleep;
         event EventHandler<string> CustomerServed;
-        event EventHandler<string> FailedToServiceCustomer;
+        event EventHandler<T> FailedToServiceCustomer;
     }
 }

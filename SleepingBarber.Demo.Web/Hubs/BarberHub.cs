@@ -14,9 +14,9 @@ namespace SleepingBarber.Demo.Web.Hubs
             _sleepingBarber.FailedToServiceCustomer += (sender, s) => FailedToServe(s);
         }
 
-        private void FailedToServe(string id)
+        private void FailedToServe(WebCustomer customer)
         {
-            Clients.All.failedToServe(id);
+            Clients.All.failedToServe(customer.Id);
         }
 
         private void CustomerServed(string id)

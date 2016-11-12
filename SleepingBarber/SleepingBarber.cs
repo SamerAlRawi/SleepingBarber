@@ -9,9 +9,20 @@ namespace SleepingBarber
         private ICustomersQueue<T> _customersQueue;
         private IServer<T> _server;
 
+        /// <summary>
+        /// This event invoked when barber finish serving all customers with timestamp of the event time
+        /// </summary>
         public event EventHandler<DateTime> GoingToSleep;
+        /// <summary>
+        /// Listen to this event if you need to track progress or store auditing information
+        /// This event invoked when a customer is served, the event argument is the customer Id
+        /// </summary>
         public event EventHandler<string> CustomerServed;
-        public event EventHandler<string> FailedToServiceCustomer;
+        /// <summary>
+        /// Invoked if the server fails to serve the given customer
+        /// the event argument is the customer instance
+        /// </summary>
+        public event EventHandler<T> FailedToServiceCustomer;
 
         public SleepingBarber(ICustomersQueue<T> customersQueue, IServer<T> server)
         {
@@ -50,7 +61,7 @@ namespace SleepingBarber
                     Try(() =>
                     {
                         if (FailedToServiceCustomer != null)
-                            FailedToServiceCustomer(this, customer.Id);
+                            FailedToServiceCustomer(this, customer);
                     });
                 }
             }
