@@ -12,7 +12,7 @@
     <language>en-US</language>
 	<tags>Persistence queue in-process barber sleeping event lightweight realtime ravendb</tags>
     <dependencies>
-		<dependency id="SleepingBarber" version="1.0" />
+		<dependency id="SleepingBarber" version="1.0.1" />
 		<dependency id="RavenDB.Client" version="3.0" />
     </dependencies>
   </metadata>
