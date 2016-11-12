@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Persistence.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Demo.PersistenceConsole", "SleepingBarber.Demo.PersistenceConsole\SleepingBarber.Demo.PersistenceConsole.csproj", "{BE31E589-5609-4596-9C9B-77B0BD09278B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{213E80EA-C0CC-4A69-8BE7-B68E5A357009}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,5 +72,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{349AD62C-DD7E-4B17-A0E5-FF7DF153A7C3} = {BCA1206C-BDFF-41C8-BFCF-582F587D1A3D}
+		{C789419B-E13D-4439-9845-B81ED0EECC93} = {213E80EA-C0CC-4A69-8BE7-B68E5A357009}
+		{C9108BE9-67EC-467F-A677-EE9E7D06C1D0} = {213E80EA-C0CC-4A69-8BE7-B68E5A357009}
+		{BE31E589-5609-4596-9C9B-77B0BD09278B} = {213E80EA-C0CC-4A69-8BE7-B68E5A357009}
 	EndGlobalSection
 EndGlobal
