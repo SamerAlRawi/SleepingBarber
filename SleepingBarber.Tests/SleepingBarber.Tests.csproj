@@ -79,7 +79,7 @@
       <Project>{2792C5CA-9A99-421B-B395-9BDED0121C31}</Project>
       <Name>SleepingBarber</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SleepingBarber\SleepingBarber.Logging.RavenDB\SleepingBarber.Logging.RavenDB.csproj">
+    <ProjectReference Include="..\SleepingBarber.Logging.RavenDB\SleepingBarber.Logging.RavenDB.csproj">
       <Project>{c82708e3-e5ba-407c-8486-f6442c06561b}</Project>
       <Name>SleepingBarber.Logging.RavenDB</Name>
     </ProjectReference>

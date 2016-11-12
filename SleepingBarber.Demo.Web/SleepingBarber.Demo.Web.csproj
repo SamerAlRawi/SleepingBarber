@@ -1048,7 +1048,7 @@
       <Project>{2792c5ca-9a99-421b-b395-9bded0121c31}</Project>
       <Name>SleepingBarber</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SleepingBarber\SleepingBarber.Logging\SleepingBarber.Logging.csproj">
+    <ProjectReference Include="..\SleepingBarber.Logging\SleepingBarber.Logging.csproj">
       <Project>{e1d15ef4-12b6-4235-87af-0eaab162953e}</Project>
       <Name>SleepingBarber.Logging</Name>
     </ProjectReference>

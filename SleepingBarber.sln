@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber", "SleepingBarber.csproj", "{2792C5CA-9A99-421B-B395-9BDED0121C31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber", "SleepingBarber\SleepingBarber.csproj", "{2792C5CA-9A99-421B-B395-9BDED0121C31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Tests", "..\SleepingBarber.Tests\SleepingBarber.Tests.csproj", "{349AD62C-DD7E-4B17-A0E5-FF7DF153A7C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Tests", "SleepingBarber.Tests\SleepingBarber.Tests.csproj", "{349AD62C-DD7E-4B17-A0E5-FF7DF153A7C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Demo.Console", "..\SleepingBarber.Demo.Console\SleepingBarber.Demo.Console.csproj", "{C789419B-E13D-4439-9845-B81ED0EECC93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Demo.Console", "SleepingBarber.Demo.Console\SleepingBarber.Demo.Console.csproj", "{C789419B-E13D-4439-9845-B81ED0EECC93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Demo.Web", "..\SleepingBarber.Demo.Web\SleepingBarber.Demo.Web.csproj", "{C9108BE9-67EC-467F-A677-EE9E7D06C1D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Demo.Web", "SleepingBarber.Demo.Web\SleepingBarber.Demo.Web.csproj", "{C9108BE9-67EC-467F-A677-EE9E7D06C1D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Persistance.RavenDB", "..\SleepingBarber.Persistance.RavenDB\SleepingBarber.Persistance.RavenDB.csproj", "{06922117-FEBB-4305-9581-0F7CA6FC7B3D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Demo.PersistanceConsole", "SleepingBarber.Demo.PersistanceConsole\SleepingBarber.Demo.PersistanceConsole.csproj", "{BE31E589-5609-4596-9C9B-77B0BD09278B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Persistance.RavenDB", "SleepingBarber.Persistance.RavenDB\SleepingBarber.Persistance.RavenDB.csproj", "{06922117-FEBB-4305-9581-0F7CA6FC7B3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Logging.RavenDB", "SleepingBarber.Logging.RavenDB\SleepingBarber.Logging.RavenDB.csproj", "{C82708E3-E5BA-407C-8486-F6442C06561B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Logging", "SleepingBarber.Logging\SleepingBarber.Logging.csproj", "{E1D15EF4-12B6-4235-87AF-0EAAB162953E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BCA1206C-BDFF-41C8-BFCF-582F587D1A3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepingBarber.Demo.PersistanceConsole", "SleepingBarber.Demo.PersistanceConsole\SleepingBarber.Demo.PersistanceConsole.csproj", "{BE31E589-5609-4596-9C9B-77B0BD09278B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,6 @@ Global
 		{06922117-FEBB-4305-9581-0F7CA6FC7B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06922117-FEBB-4305-9581-0F7CA6FC7B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06922117-FEBB-4305-9581-0F7CA6FC7B3D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE31E589-5609-4596-9C9B-77B0BD09278B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE31E589-5609-4596-9C9B-77B0BD09278B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE31E589-5609-4596-9C9B-77B0BD09278B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE31E589-5609-4596-9C9B-77B0BD09278B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C82708E3-E5BA-407C-8486-F6442C06561B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C82708E3-E5BA-407C-8486-F6442C06561B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C82708E3-E5BA-407C-8486-F6442C06561B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,6 +55,10 @@ Global
 		{E1D15EF4-12B6-4235-87AF-0EAAB162953E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1D15EF4-12B6-4235-87AF-0EAAB162953E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1D15EF4-12B6-4235-87AF-0EAAB162953E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE31E589-5609-4596-9C9B-77B0BD09278B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE31E589-5609-4596-9C9B-77B0BD09278B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE31E589-5609-4596-9C9B-77B0BD09278B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE31E589-5609-4596-9C9B-77B0BD09278B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
