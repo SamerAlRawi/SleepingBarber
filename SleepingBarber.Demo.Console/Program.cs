@@ -17,7 +17,7 @@ namespace SleepingBarber.Demo.Console
             _server = new Server<Customer>();
             _sleepingBarber = new SleepingBarber<Customer>(_queue, _server);
             _sleepingBarber.GoingToSleep += BarberWentToSleep;
-            WriteLine("Enter customers number to add then press ENTER");
+            WriteLine("Enter customers range to add then press ENTER");
             WriteLine("Enter Q to Exit");
             
             while (!exitRequested)

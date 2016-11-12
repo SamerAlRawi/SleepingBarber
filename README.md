@@ -1,11 +1,11 @@
-# SleepingBarber
-A lightweight queue for .net
+ SleepingBarber
+A lightweight in-process queue for .net
   - concurrent and fault tolerant.
   - support for logging.
-  - with persistance.
+  - persistance.
   - support for events.
 
-![Alt text](https://gitlab.com/sameralrawi/sleepingbarber/raw/364ba9a945b703bc7e667f10b6bfdf007f49a648/diagram.jpg)
+![Alt text](https://github.com/sameralrawi/sleepingbarber/raw/364ba9a945b703bc7e667f10b6bfdf007f49a648/diagram.jpg)
 
 > SleepingBarber can be hosted as part of ASP.net application.
 
