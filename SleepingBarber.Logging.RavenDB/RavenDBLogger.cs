@@ -12,7 +12,7 @@ namespace SleepingBarber.Logging.RavenDB
         /// <summary>
         /// Construct with RavenDB document store address
         /// </summary>
-        /// <param name="documentStore"></param>
+        /// <param name="documentStore">RavenDB docment store address</param>
         public RavenDBLogger(IDocumentStore documentStore)
         {
             _documentStore = documentStore;
